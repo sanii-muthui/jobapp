@@ -21,3 +21,22 @@
 
 ## Cloning and running
 - Clone the application using git clone(this copies the app onto your device). In terminal:
+
+
+### Creating virtual environment
+
+$ python3.6 -m venv --without-pip virtual
+$ source virtual/bin/env
+$ curl https://bootstrap.pypa.io/get-pip.py | python
+
+### Installing flask and other modules
+
+$ python3.6 -m pip install Flask
+$ python3.6 -m pip install Flask-Bootstrap
+$ python3.6 -m pip install Flask-Script
+$ python3.6 -m pip install -r requirements.txt
+
+### Running the application
+
+$ chmod a+x start.sh
+$ ./start.sh
