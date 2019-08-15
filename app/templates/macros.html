@@ -1,0 +1,52 @@
+{% macro display(category_list) %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<div class="container" style="background-image: url('https://previews.123rf.com/images/thissatan/thissatan1702/thissatan170200191/72225986-white-slate-background-or-texture.jpg')">
+<div class="row"style="overflow-y: scroll; height: 800px;">
+	{% if category_list %}
+		{% for category in category_list %}
+		<div class="col-md-6" >
+			<div class="card" style="font-size: 20px;">
+			<!--h5 class="card-header"style="font-size: 25px;">{{category.category}}</h5-->
+			<h5 class="card-header" style="text-align: center;font-size: 25px;">{{category.title}}</h5>
+			<div class="card-body">
+					<h2>{{category.description}}</h2>
+					<a href="{{url_for('main.new_comment',pitch_id = category.id)}}" style="font-size: 18px;"class="btn btn-primary"> Subscribe now</a>
+				   <form method="POST" action="{{ url_for('main.delete_entry',pitch_id = category_list) }}">
+					<input type="submit" class="btn btn-danger" value="Delete">
+				   </form>
+			</div>
+				<div class="card-footer text-muted">
+					<p> Posted by {{category.user.username}}</p>
+				</div>
+		    </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</div>
+		{% endfor %}
+	{% else %}
+	{% endif %}
+</div>
+{% endmacro %}
+
+
+
+{% macro displayComment(comments) %}
+<ul>
+
+			{% if comments %}
+			{% for comment in comments %}
+				<div class="row text-center">
+						<a><p style="color: brown">{{ comment.description }}</p></a>
+						<small> posted by {{comment.user.username}}</small>
+				</div>
+			{% endfor %}
+			{% else %}
+
+			<h3>This post does  not does not have any comments yet !</h3>
+			{%endif%}
+
+	</ul>
+	
+			
+</div>
+
+{% endmacro %}
