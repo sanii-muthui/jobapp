@@ -1,0 +1,41 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+{% extends 'base.html'%}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                    <h3 class="card-header"> {{user.username| capitalize}} BIO </h3>
+                    <div class="card-body">
+                            {% if user.bio %}
+                            <p> {{user.bio}}</p>
+                            {%else%}
+                            <p> {{user.username| capitalize}} has no bio </p>
+                            {% endif %}
+                    </div>
+                    
+            </div>
+            
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+            <div class="card-body">
+                    {% if user.profile_pic_path %}
+                    <img src="{{url_for('static',filename=user.profile_pic_path)}}" alt="" class="img-thumbnail">
+                    {%else%}
+                    <p>No profile picture</p>
+                    {% endif %}
+                {% if user == current_user %}
+                <form action="{{url_for('main.update_pic',uname=user.username)}}" method="post" enctype="multipart/form-data">
+                    <input type="file" name="photo" class="form-control" required>
+                    <input type="submit" class="btn btn-primary">
+                </form>
+                {% endif %}
+            </div>
+           
+        </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
