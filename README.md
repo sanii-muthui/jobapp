@@ -40,3 +40,15 @@ $ python3.6 -m pip install -r requirements.txt
 
 $ chmod a+x start.sh
 $ ./start.sh
+
+### Testing the Application
+
+$ python3.6 manage.py test
+
+## Technologies used
+
+-Python3.6
+- Flask
+
+
+
