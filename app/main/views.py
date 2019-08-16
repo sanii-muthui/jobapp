@@ -38,34 +38,17 @@ def new_pitch():
          title = pitch_form.title.data
          owner_id = current_user
          category = pitch_form.category.data
+         company = pitch_form.company.data
+         state = pitch_form.state.data
+         qualifications = pitch_form.qualifications.data
          print(current_user._get_current_object().id)
         # Updated pitch instance
-         new_pitch = Pitch(owner_id =current_user.id, title = title,description=description,category=category)
+         new_pitch = Pitch(owner_id =current_user.id, title = title,description=description,category=category,company=company,state=state,qualifications=qualifications)
          db.session.add(new_pitch)
          db.session.commit()
          title = 'New Pitch'
          return redirect(url_for('main.index'))
     return render_template('admin/pitches.html', pitch_form=pitch_form)
-
-
-
-#@main.route('/pitches/<int:pitch_id>/delete',methods=['GET','POST'])
-#@login_required
-#def delete_entry(pitch_id):
-    '''
-    View function to delete a drift post
-    '''
- #   pitch=Pitch.query.get_or_404(pitch_id)
-  #  if pitch.author != current_user:
-   #     abort(403)
-        
-    #db.session.delete(new_pitch)
-    #db.session.commit()
-    #flash('Post Deleted Successfully','success')
-    
-    #return redirect(url_for('/'))
-
-
 
 @main.route('/comment/new/<int:pitch_id>', methods = ['GET','POST'])
 @login_required

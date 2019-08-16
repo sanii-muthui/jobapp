@@ -6,8 +6,9 @@
     list-style-type: none;
     margin: 0;
     padding: 0;
+    font-size: 15px;
     overflow: hidden;
-    background-color:#4E1A3D;
+    background-color: black
   }
   
   li {
@@ -27,9 +28,7 @@
     text-decoration: none;
   }
   
-  li a:hover:not(.active) {
-    background-color:#4E1A3D;
-  }
+ 
   
   .right{
     float:right;
@@ -41,7 +40,9 @@
   <ul>
     <li><a  href="/">Home</a></li>
     {% if current_user.is_authenticated %}
-            <li><a href="/pitches/new/"> Add Job </a></li>
+    {% if  current_user.role_id==1%}
+            <li><a href="admin/pitches/new/"> Add Job </a></li>
+            {% endif %}
             <li class="right"><a s href="{{url_for('main.profile',uname=current_user.username)}}">{{current_user.username}}</a></li>
             <li class="right"><a  href="{{url_for('auth.logout')}}">Sign out</a></li>
             {% else %}
