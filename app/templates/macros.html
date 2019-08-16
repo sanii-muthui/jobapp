@@ -1,23 +1,25 @@
 {% macro display(category_list) %}
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
 integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<div class="container" style="background-image: url('https://previews.123rf.com/images/thissatan/thissatan1702/thissatan170200191/72225986-white-slate-background-or-texture.jpg')">
+
 <div class="row"style="overflow-y: scroll; height: 800px;">
 	{% if category_list %}
 		{% for category in category_list %}
 		<div class="col-md-6" >
 			<div class="card" style="font-size: 20px;">
-			<!--h5 class="card-header"style="font-size: 25px;">{{category.category}}</h5-->
-			<h5 class="card-header" style="text-align: center;font-size: 25px;">{{category.title}}</h5>
+			<h5 class="card-header" style="text-align: center;font-size: 25px; color: firebrick">{{category.title}}</h5>
 			<div class="card-body">
-					<h2>{{category.description}}</h2>
-					<a href="{{url_for('main.new_comment',pitch_id = category.id)}}" style="font-size: 18px;"class="btn btn-primary"> Subscribe now</a>
-				   <form method="POST" action="{{ url_for('main.delete_entry',pitch_id = category_list) }}">
-					<input type="submit" class="btn btn-danger" value="Delete">
-				   </form>
-			</div>
-				<div class="card-footer text-muted">
-					<p> Posted by {{category.user.username}}</p>
+					<h5 class="card-header" style="font-size: 25px;">Company</h5>
+					<h2>{{category.company}}</h2>
+					<h5 class="card-header" style="font-size: 25px;">State</h5>
+					<h2>{{category.state}}</h2>
+					<h5 class="card-header" style="font-size: 25px; text-align: center">Job Description</h5>
+					<h2 style="text-align: center">{{category.description}}</h2>
+					<h5 class="card-header" style="font-size: 25px;text-align: center">Qualifications</h5>
+					<h2 style="text-align: center">{{category.qualifications}}</h2>
+					<a href="#" style="font-size: 18px;"class="btn btn-outline-primary btn-lg btn-block">Apply Now</a>
+					<a href="{{url_for('main.new_comment',pitch_id = category.id)}}" style="font-size: 18px;"class="btn btn-outline-primary btn-lg btn-block"> Subscribe now</a>
+			
 				</div>
 		    </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		</div>
@@ -30,23 +32,26 @@ integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6J
 
 
 {% macro displayComment(comments) %}
-<ul>
 
+<ul>
+		
 			{% if comments %}
 			{% for comment in comments %}
 				<div class="row text-center">
-						<a><p style="color: brown">{{ comment.description }}</p></a>
+						<a><p style="color: brown;font-size: 25px;text-align: center">{{ comment.description }}</p></a>
 						<small> posted by {{comment.user.username}}</small>
 				</div>
 			{% endfor %}
 			{% else %}
 
-			<h3>This post does  not does not have any comments yet !</h3>
+			<h3 style="color: aliceblue">This post does  not does not have any comments yet !</h3>
 			{%endif%}
 
 	</ul>
-	
+	<div class="alert alert-danger" style="text-align: center"role="alert">
+			You Are Now Subscribed!!
+			 </div>
 			
-</div>
+
 
 {% endmacro %}
