@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+  <style>
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color:#4E1A3D;
+  }
+  
+  li {
+    float: left;
+    border-right:1px solid #bbb;
+  }
+  
+  li:last-child {
+    border-right: none;
+  }
+  
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  li a:hover:not(.active) {
+    background-color:#4E1A3D;
+  }
+  
+  .right{
+    float:right;
+  }
+  </style>
+  </head>
+  <body>
+  
+  <ul>
+    <li><a  href="/">Home</a></li>
+    {% if current_user.is_authenticated %}
+            <li><a href="/pitches/new/"> Add Job </a></li>
+            <li class="right"><a s href="{{url_for('main.profile',uname=current_user.username)}}">{{current_user.username}}</a></li>
+            <li class="right"><a  href="{{url_for('auth.logout')}}">Sign out</a></li>
+            {% else %}
+            <li class="right"><a  href="{{url_for('auth.login')}}">Sign in{{current_user.username}}</a></li>
+            {%endif%}
+  </ul>
+  
+  </body>
+  </html></div>
