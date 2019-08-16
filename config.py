@@ -5,7 +5,7 @@ class Config:
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://sanii:2125@localhost/jobapp'
     UPLOADED_PHOTOS_DEST ='app/static/photos'
 
-     MAIL_SERVER = 'smtp.gmail.com'
+    MAIL_SERVER = 'smtp.gmail.com'
     MAIL_PORT = 587
     MAIL_USE_TLS = True
     MAIL_USERNAME = os.environ.get("EMAIL_USERNAME")
@@ -17,8 +17,7 @@ class TestConfig(Config):
     DEBUG = True
 
 class ProdConfig(Config):
-    
-   SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
+    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
 
 class DevConfig(Config):
     DEBUG = True
