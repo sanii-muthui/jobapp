@@ -1,7 +1,7 @@
 ## Project Name
 - JobCorner App
 
-## Project Authors
+##Project Authors
 - Sanii Muthui
 - Adriano Matongo
 - Juliet Jay
